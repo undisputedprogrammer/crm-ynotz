@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
     {
         $craft = Hospital::where('name', 'ABC')->get()->first();
         $craftadmin = User::create([
-            'name' => 'Craft Admin',
+            'name' => 'System Admin',
             'email' => 'admin@demo.com',
             'designation' => 'Administrator',
             'hospital_id'=> $craft->id,
