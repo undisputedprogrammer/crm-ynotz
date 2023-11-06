@@ -117,7 +117,13 @@
                 <h1 class=" font-medium text-base text-secondary">Lead details</h1>
                     <p class="font-medium">Name : <span x-text=" fp.lead != undefined ? fp.lead.name : '' "> </span></p>
                     <p class="font-medium">City : <span x-text="fp.lead != undefined ? fp.lead.city : '' "> </span></p>
-                    <p class="font-medium">Phone : <span x-text=" fp.lead != undefined ? fp.lead.phone : '' "> </span></p>
+                    <p class="font-medium flex space-x-1 items-center">
+                        <span>Phone : </span>
+                        <span x-text=" fp.lead != undefined ? fp.lead.phone : '' "> </span>
+                        <a href="" class=" btn btn-ghost btn-xs">
+                            <x-icons.call-icon/>
+                        </a>
+                    </p>
                     <p class="font-medium flex space-x-1"><span>Email : <span> <span x-text=" fp.lead != undefined ? fp.lead.email : '' "> </span>
                         <a class=" btn btn-xs btn-ghost"
                         @click.prevent.stop="$dispatch('linkaction',{

@@ -18,10 +18,10 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $craft = Hospital::where('name', 'Craft')->get()->first();
+        $craft = Hospital::where('name', 'ABC')->get()->first();
         $craftadmin = User::create([
             'name' => 'Craft Admin',
-            'email' => 'cmo@ivfcraft.com',
+            'email' => 'admin@demo.com',
             'designation' => 'Administrator',
             'hospital_id'=> $craft->id,
             'email_verified_at' => now(),
@@ -57,21 +57,21 @@ class UserSeeder extends Seeder
         //     $user->assignRole('agent');
         // }
 
-        $ar = Hospital::where('name', 'AR')->get()->first();
-        $aradmin = User::create([
-            'name' => 'AR Admin',
-            'email' => 'admin@armedicentre.com',
-            'designation' => 'Administrator',
-            'hospital_id'=> $ar->id,
-            'email_verified_at' => now(),
-            'password' => Hash::make('abcd1234'),
-            'remember_token' => Str::random(10),
-        ]);
+        // $ar = Hospital::where('name', 'AR')->get()->first();
+        // $aradmin = User::create([
+        //     'name' => 'AR Admin',
+        //     'email' => 'admin@armedicentre.com',
+        //     'designation' => 'Administrator',
+        //     'hospital_id'=> $ar->id,
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('abcd1234'),
+        //     'remember_token' => Str::random(10),
+        // ]);
 
-        $aradmin->assignRole('admin');
-        foreach ($ar->centers as $c) {
-            $aradmin->centers()->save($c);
-        }
+        // $aradmin->assignRole('admin');
+        // foreach ($ar->centers as $c) {
+        //     $aradmin->centers()->save($c);
+        // }
 
         // $aragent = User::create([
         //     'name' => 'AR Agent',

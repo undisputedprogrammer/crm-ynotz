@@ -27,7 +27,7 @@ class SmartPagesProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'smartpages');
+        $this->loadViewsFrom(__DIR__.'/../resources/xviews', 'smartpages');
         Blade::componentNamespace('Ynotz\SmartPages\\View\\Components', 'smartpages');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php', 'smartpages');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'smartpages');

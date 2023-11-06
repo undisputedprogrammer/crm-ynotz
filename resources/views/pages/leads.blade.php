@@ -351,7 +351,11 @@
                 <div class=" mb-4">
                     <p class="text-sm font-medium">Name : <span x-text="lead.name"> </span></p>
                     <p class="text-sm font-medium">City : <span x-text="lead.city"> </span></p>
-                    <p class="text-sm font-medium">Phone : <span x-text="lead.phone"> </span></p>
+                    <p class="text-sm font-medium flex space-x-1 items-center">
+                        <span>Phone :</span>
+                        <span x-text="lead.phone"> </span>
+                        <a class=" btn btn-ghost btn-xs"><x-icons.call-icon/></a>
+                    </p>
                     <p class="text-sm font-medium flex space-x-1 items-center"><span>Email : <span><span x-text="lead.email"> </span>
                         <a class=" btn btn-xs btn-ghost"
                         @click.prevent.stop="$dispatch('linkaction',{

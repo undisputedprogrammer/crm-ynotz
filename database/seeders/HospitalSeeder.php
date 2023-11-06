@@ -12,40 +12,23 @@ class HospitalSeeder extends Seeder
 {
     private $hospitals = [
         [
-            'name' => 'Craft',
-            'code' => 'craft',
-            'ho_location' => 'Kodungalloor',
-            'email' => 'info@craftivf.com',
+            'name' => 'ABC',
+            'code' => 'ABC',
+            'ho_location' => 'Kochi',
+            'email' => 'demo@abchospital.com',
             'phone' => '1234512345',
             'main_cols' => [
                 'name' => 'full_name',
                 'email' => 'email',
                 'phone' => 'phone_number',
                 'city' => 'city',
-                'access_token' => 'EAAMk25QApioBO6SvBdiMsr5HQPmivzZA5r50OwmoQqdEGVegEk4pgNIZAWJZAWg05WM1ZCqbod3TIuI3zUrXFVykJg2BkM5UVGha67SpVkDdeCz1vF9yg6Mb6JvFtY9GzsKtZBpKmMMMtZBo0otRnc5mlzszAHYtCUtfw21vwz086LuR1YaJdVYwthNTZBCgkFpp2ZA8R2I2TgX9'
+                'access_token' => 'EAAMk25QApioBO6SvBdiMsr5HQPmivzZA5r50OwmoQqdEGVegEk4pgNIZAWJZAWg05WM1ZCqbod3TIuI3zUrXFVykJg2BkM5UVGha67SpVkDdeCz1vF9yg6Mb6JvFtY9GzsKtZBpKmMMMtZBo0otRnc5mlzszAHYtCUtfw21vwz086LuR1YaJdVYwthNTZBCgkFpp2ZA8R2I2TgX9-demo'
             ],
             'centers' => [
-                'Craft_Kodungallur',
-                'Craft_Kochi'
+                'ABC_Kochi',
+                'ABC_Chennai'
             ]
-        ],
-        [
-            'name' => 'AR',
-            'code' => 'ar',
-            'ho_location' => 'Kodungalloor',
-            'email' => 'info@armedicentre.com',
-            'phone' => '1234512345',
-            'main_cols' => [
-                'name' => 'name',
-                'email' => 'email',
-                'phone' => 'contact_number',
-                'city' => 'city',
-                'access_token' => 'EAAMk25QApioBO6SvBdiMsr5HQPmivzZA5r50OwmoQqdEGVegEk4pgNIZAWJZAWg05WM1ZCqbod3TIuI3zUrXFVykJg2BkM5UVGha67SpVkDdeCz1vF9yg6Mb6JvFtY9GzsKtZBpKmMMMtZBo0otRnc5mlzszAHYtCUtfw21vwz086LuR1YaJdVYwthNTZBCgkFpp2ZA8R2I2TgX9'
-            ],
-            'centers' => [
-                'AR_Kodungallur'
-            ]
-        ],
+        ]
     ];
     /**
      * Run the database seeds.
