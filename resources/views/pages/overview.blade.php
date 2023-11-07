@@ -259,7 +259,7 @@
                                 <input type="file" name="sheet" @change="fileName = $el.files[0].name"
                                     class="file-input file-input-bordered file-input-success text-base-content file-input-sm w-full max-w-xs" accept=".xlsx" />
 
-                                <div class="form-control w-full max-w-xs">
+                                <div class="form-control w-full max-w-xs hidden">
                                     <label class="label">
                                         <span class="label-text">Hospital</span>
                                     </label>
