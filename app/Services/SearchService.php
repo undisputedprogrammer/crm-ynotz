@@ -4,6 +4,7 @@ namespace App\Services;
 
 use DB;
 use App\Models\Followup;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class SearchService
@@ -23,8 +24,8 @@ class SearchService
 
         }
 
-        $query->where($request->search_type, '>=', $request->from_date)
-        ->where($request->search_type, '<=', $request->to_date)
+        $query->where($request->search_type, '>=', Carbon::parse($request->from_date))
+        ->where($request->search_type, '<=', Carbon::parse($request->to_date)->addDay())
         ->with(['lead' => function ($q) {
             return $q->with(['appointment','assigned']);
         }, 'remarks', 'user']);
