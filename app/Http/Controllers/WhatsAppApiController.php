@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use Carbon\Carbon;
 use App\Models\Chat;
 use App\Models\Lead;
 use App\Models\User;
+use App\Models\Center;
 use GuzzleHttp\Client;
 use App\Models\Message;
 use App\Models\Followup;
+use App\Models\Hospital;
 use Illuminate\Http\Request;
 use App\Jobs\SendBulkMessage;
-use App\Models\Center;
-use App\Models\Hospital;
 use App\Models\UnreadMessages;
 use App\Services\WhatsAppApiService;
 use Illuminate\Support\Facades\Auth;
@@ -223,8 +224,23 @@ class WhatsAppApiController extends SmartController
                 'assigned_to' =>
                     User::where('hospital_id', $center->hospital_id)->whereHas('centers', function($q) use($reciever) {
                         return $q->where('phone', $reciever);
-                    })->where('designation','!=','Administrator')->get()->random()->id
+                    })->where('designation','!=','Administrator')->get()->random()->id,
+                'created_by' => User::where('hospital_id', $center->hospital_id)
+                ->whereHas('centers', function($q) use($reciever) {
+                        return $q->where('phone', $reciever);
+                    })->where('designation','Administrator')->get()->random()->id
             ]);
+
+            Followup::create([
+                'lead_id' => $lead->id,
+                'followup_count' => 1,
+                'scheduled_date' => Carbon::today(),
+                'user_id' => $lead->assigned_to
+            ]);
+
+            $lead->followup_created = true;
+            $lead->save();
+
             }
             // return response('lead is '.$lead->name);
             $type = "text";
