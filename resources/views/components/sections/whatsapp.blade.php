@@ -16,9 +16,24 @@
                             <div class="chat-bubble font-medium" :class = "chat.direction == 'Outbound' ? ' chat-bubble-success' : '' " x-text="chat.message"></div>
                         </template>
 
-                        <template x-if="chat.type == 'media'">
-                            <div class="chat-bubble font-medium" :class = "chat.direction == 'Outbound' ? ' chat-bubble-success' : '' " >
-                                <img :src="chat.message" class=" rounded-lg w-44 h-fit" alt="">
+                        <template x-if="chat.type == 'media' && ['jpg','jpeg','png','webp','svg'].includes(chat.message.split('.')[chat.message.split('.').length - 1])">
+                            <div class="chat-bubble font-medium" :class = "chat.direction == 'Outbound' ? ' chat-bubble-success' : '' "  >
+                                {{-- checking if the media is an image --}}
+                                {{-- <template x-if=""> --}}
+                                    <img :src="chat.message" class=" rounded-lg w-44 h-fit" alt="">
+                                {{-- </template> --}}
+                            </div>
+                        </template>
+
+                        {{-- checking if media is not an image --}}
+                        <template x-if=" chat.type == 'media' && !['jpg','jpeg','png','webp','svg'].includes(chat.message.split('.')[chat.message.split('.').length - 1])">
+                            <div class="chat-bubble font-medium" :class = "chat.direction == 'Outbound' ? ' chat-bubble-success' : '' "  >
+                                <a :href="chat.message" download="" >
+                                  <div class=" flex flex-row space-x-1">
+                                        <x-icons.document-download/>
+                                        <p class=" font-medium" x-text="chat.message.split('/')[chat.message.split('/').length -1].slice(6)"></p>
+                                    </div>
+                                </a>
                             </div>
                         </template>
 

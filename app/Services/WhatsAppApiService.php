@@ -82,6 +82,10 @@ class WhatsAppApiService
         $media_url = env('APP_URL').$path;
         info('link to file is '.env('APP_URL').$path);
 
+        $image_types = ["jpg","png","webp","jpeg","gif","svg"];
+
+        $media_type = in_array($ext, $image_types) ? "image" : "document";
+
         $center = Center::find($lead->center_id);
         $hospital = Hospital::find($lead->hospital_id);
 
@@ -89,7 +93,7 @@ class WhatsAppApiService
             "messaging_product"=> "whatsapp",
             "recipient_type"=> "individual",
             "to"=> $recipient,
-            "type"=>"image",
+            "type"=> $media_type,
             "image"=>array(
                 "link"=> env('APP_MODE') == 'dev' ? "https://i.pinimg.com/originals/be/33/76/be3376b0f835a1766cb7a95003ea4a7d.jpg" : $media_url,
                 // change link to $media_url when deploying
