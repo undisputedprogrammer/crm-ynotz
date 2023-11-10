@@ -8,7 +8,7 @@ currentroute=$event.detail.currentroute;"
 @routechange.window="currentroute=$event.detail.route;"
 :data-theme="theme">
     <head>
-        <title>{{ config('app.name', 'CRAFT Hospital and Research Centre') }}</title>
+        <title>{{ config('app.name', 'Lead Management System') }}</title>
         <link rel="shortcut icon" type="image/jpg" href="{{asset('favicon-craft.ico')}}"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -2,11 +2,15 @@
 <div x-show="!messageLoading" class=" h-[470px] hide-scroll relative">
     <div x-data="{
         open: false,
+        displayImage(src){
+            $dispatch('displayimage',{src: src});
+        }
     }" class=" overflow-y-scroll h-[calc(470px-48px)] hide-scroll"
     @notify.window="
     if(lead.id == $event.detail.lead_id){
         chats.push($event.detail.msg);
     }">
+
         <template x-if="chats.length != 0">
             <template x-for="chat in chats">
 
@@ -16,12 +20,11 @@
                             <div class="chat-bubble font-medium" :class = "chat.direction == 'Outbound' ? ' chat-bubble-success' : '' " x-text="chat.message"></div>
                         </template>
 
-                        <template x-if="chat.type == 'media' && ['jpg','jpeg','png','webp','svg'].includes(chat.message.split('.')[chat.message.split('.').length - 1])">
+                        <template x-if="chat.type == 'media' && ['jpg','jpeg','png','webp','svg','gif'].includes(chat.message.split('.')[chat.message.split('.').length - 1])">
                             <div class="chat-bubble font-medium" :class = "chat.direction == 'Outbound' ? ' chat-bubble-success' : '' "  >
-                                {{-- checking if the media is an image --}}
-                                {{-- <template x-if=""> --}}
-                                    <img :src="chat.message" class=" rounded-lg w-44 h-fit" alt="">
-                                {{-- </template> --}}
+
+                                    <img @click.prevent.stop="displayImage($el.src);" :src="chat.message" class=" rounded-lg w-44 h-fit" alt="">
+
                             </div>
                         </template>
 
@@ -91,7 +94,7 @@
                 resetMedia();
             }
             else if ($event.detail.content.status == 'fail') {
-                $dispatch('showtoast', {message: $event.detail.content.errors, mode: 'error'});
+                $dispatch('showtoast', {message: $event.detail.content.message, mode: 'error'});
 
             }
             else{
